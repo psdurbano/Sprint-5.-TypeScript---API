@@ -39,7 +39,7 @@ function fetcher(url, headers) {
     if (url === void 0) { url = ""; }
     if (headers === void 0) { headers = {}; }
     return __awaiter(this, void 0, void 0, function () {
-        var response, data;
+        var response, data, jokeContent;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, fetch(url, headers)];
@@ -48,7 +48,15 @@ function fetcher(url, headers) {
                     return [4 /*yield*/, response.json()];
                 case 2:
                     data = _a.sent();
-                    console.log(data);
+                    jokeContent = document.querySelector("#joke-content");
+                    if (!jokeContent) {
+                        //Create a new element
+                        jokeContent = document.createElement("p");
+                        jokeContent.setAttribute("id", "joke-content");
+                        document.body.appendChild(jokeContent);
+                    }
+                    //Assign the value of joke to the text content of the element
+                    jokeContent.textContent = data.joke;
                     return [2 /*return*/];
             }
         });

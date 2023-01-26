@@ -1,0 +1,53 @@
+/* Agregar una imagen de fondo con transparencia del 50% */
+body {
+  background-image: url("./img/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+/* Centrar el div que contiene el h1 */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Crear un contenedor con un fondo blanco y transparencia */
+.container {
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 60%;
+  height: 80%;
+  margin: 0 auto; /* centrar horizontalmente */
+  padding: 2em;
+  position: relative;
+  display: flex; /* habilitar flexbox */
+  flex-direction: column; /* establecer la dirección de los elementos hijos en columna */
+  align-items: center; /* centrar verticalmente */
+  justify-content: center; /* centrar horizontalmente */
+}
+
+/* Estilo para el boton */
+
+.container p {
+  color: black;
+  font-size: 1em;
+}
+
+/* Estilo para el h1 */
+.container h1 {
+  color: black;
+  font-size: 2em;
+}
+
+/* Estilo para el boton */
+.container button {
+  background-color: rgb(23, 157, 177);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 1em;
+}
