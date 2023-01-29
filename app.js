@@ -35,33 +35,76 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _a;
+var reportJokes = [];
+var currentScore = 1;
 function fetcher(url, headers) {
+    var _a, _b, _c;
     if (url === void 0) { url = ""; }
     if (headers === void 0) { headers = {}; }
     return __awaiter(this, void 0, void 0, function () {
-        var response, data, jokeContent;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        function updateReportJokes(joke, score) {
+            var jokeExists = false;
+            // Recorrer el array reportJokes
+            reportJokes.forEach(function (j) {
+                // Si la broma ya existe en el array reportJokes, actualizar su puntuación
+                if (j.joke === joke) {
+                    j.score = score;
+                    jokeExists = true;
+                }
+            });
+            // Si la broma no existe en el array reportJokes, agregar una nueva entrada
+            if (!jokeExists) {
+                reportJokes.push({ joke: joke, score: score, date: new Date().toLocaleString() });
+            }
+            console.log(reportJokes);
+        }
+        var response, data, jokeContent, voteButtons;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
                 case 0: return [4 /*yield*/, fetch(url, headers)];
                 case 1:
-                    response = _a.sent();
+                    response = _d.sent();
                     return [4 /*yield*/, response.json()];
                 case 2:
-                    data = _a.sent();
+                    data = _d.sent();
                     jokeContent = document.querySelector("#joke-content");
+                    // Si no existe el elemento, crear un nuevo elemento "p" con el id "joke-content"
                     if (!jokeContent) {
-                        //Create a new element
                         jokeContent = document.createElement("p");
                         jokeContent.setAttribute("id", "joke-content");
                         document.body.appendChild(jokeContent);
                     }
-                    //Assign the value of joke to the text content of the element
+                    // Asignar el valor de "data.joke" al contenido de texto del elemento seleccionado o creado
                     jokeContent.textContent = data.joke;
+                    voteButtons = document.querySelector("#vote-buttons");
+                    if (voteButtons) {
+                        voteButtons.style.display = "block";
+                    }
+                    // Agregar eventos "click" a los botones de votación
+                    (_a = document.querySelector("#vote-1")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
+                        // Asignar el valor de la puntuación actual al valor 1
+                        currentScore = 1;
+                        // Actualizar la puntuación en el array reportJokes
+                        updateReportJokes(data.joke, currentScore);
+                    });
+                    (_b = document.querySelector("#vote-2")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function () {
+                        // Asignar el valor de la puntuación actual al valor 2
+                        currentScore = 2;
+                        // Actualizar la puntuación en el array reportJokes
+                        updateReportJokes(data.joke, currentScore);
+                    });
+                    (_c = document.querySelector("#vote-3")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", function () {
+                        // Asignar el valor de la puntuación actual al valor 3
+                        currentScore = 3;
+                        // Actualizar la puntuación en el array reportJokes
+                        updateReportJokes(data.joke, currentScore);
+                    });
                     return [2 /*return*/];
             }
         });
     });
 }
+// Agregar un evento "click" al elemento con la clase "next-joke" (si existe) que llama a la función fetcher
 (_a = document.querySelector(".next-joke")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
     fetcher("https://icanhazdadjoke.com/", {
         headers: {

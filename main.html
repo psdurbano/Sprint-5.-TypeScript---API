@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles.css" />
-    <title>Sprint 5. TypeScript & API</title>
-  </head>
-  <body>
-    <div>
-      <p>Avui: parcialment ennuvolat</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Sprint 5. TypeScript & API</title>
+</head>
+
+<body>
+  <div>
+    <p>Avui: parcialment ennuvolat</p>
+  </div>
+  <div class="container">
+    <h1>Preparado para reirte??</h1>
+    <div id="joke-container" style="display: flex; flex-direction: column; align-items: center;">
+      <div id="joke-content"></div>
+      <div id="vote-buttons" style="display: flex; flex-direction: row; margin-top: 1rem;">
+          <button id="vote-1">1</button>
+          <button id="vote-2">2</button>
+          <button id="vote-3">3</button>
+      </div>
+      <button class="next-joke" style="margin-top: 1rem;">Siguiente chiste</button>
     </div>
-    <div class="container">
-      <h1>Preparado para reirte??</h1>
-      <p id="joke-content"></p>
-      <button class="next-joke">proximo chiste</button>
-    </div>
-    <script src="./app.js"></script>
-  </body>
+  </div>
+  <script src="./app.js"></script>
+</body>
+
 </html>
